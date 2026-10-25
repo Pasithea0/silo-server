@@ -25778,8 +25778,13 @@ export interface components {
       page?: components["schemas"]["PageInfo"];
     };
     Marker: {
+      algorithm?: string;
+      /** Format: double */
+      confidence?: number;
       /** Format: double */
       end: number;
+      provider?: string;
+      source?: string;
       /** Format: double */
       start: number;
     };
@@ -32496,11 +32501,17 @@ export interface components {
       tmdb_id: number;
     };
     WatchMarker: {
+      algorithm?: string;
+      /** Format: double */
+      confidence?: number;
       /**
        * Format: double
        * @example 90
        */
       end_seconds: number;
+      provider?: string;
+      /** @enum {string} */
+      source?: "scanner" | "online" | "plugin" | "s3" | "manual";
       /**
        * Format: double
        * @example 0
