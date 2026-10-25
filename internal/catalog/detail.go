@@ -680,19 +680,25 @@ type SubtitleInfo struct {
 type Marker struct {
 	Start float64 `json:"start"`
 	End   float64 `json:"end"`
+	// The provenance fields are excluded from JSON on purpose. This struct is the
+	// wire shape of the frozen GET /api/v1/watch/{id} response, which carries these
+	// markers directly, so a tag here would add fields to a contract that is closed.
+	// Clients that should see provenance read the v2 marker, which maps from these
+	// Go fields rather than from their JSON.
+	//
 	// Source is the class of source (models.MarkerSource*): "scanner" for local
 	// detection, "plugin"/"online" for a provider, "manual" for a person.
-	Source string `json:"source,omitempty"`
+	Source string `json:"-"`
 	// Provider is the provider that supplied the range — a plugin capability id
 	// such as "introdb", or "built_in" — and is empty for a locally detected or
 	// manually set marker.
-	Provider string `json:"provider,omitempty"`
+	Provider string `json:"-"`
 	// Confidence is the source's own rating, 0-1, absent when the marker was never
 	// rated. It is a pointer for that reason: an unrated marker is stored as 0, so
 	// a bare float would report a real "0%" for a range nobody rated.
-	Confidence *float64 `json:"confidence,omitempty"`
+	Confidence *float64 `json:"-"`
 	// Algorithm identifies the detector, e.g. "chromaprint:v4" or "introdb:v4".
-	Algorithm string `json:"algorithm,omitempty"`
+	Algorithm string `json:"-"`
 }
 
 // SeasonUserData is the profile-scoped progress payload shared across item,

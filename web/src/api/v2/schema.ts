@@ -25778,13 +25778,8 @@ export interface components {
       page?: components["schemas"]["PageInfo"];
     };
     Marker: {
-      algorithm?: string;
-      /** Format: double */
-      confidence?: number;
       /** Format: double */
       end: number;
-      provider?: string;
-      source?: string;
       /** Format: double */
       start: number;
     };

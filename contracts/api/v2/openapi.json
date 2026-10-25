@@ -34501,22 +34501,9 @@
       "Marker": {
         "additionalProperties": false,
         "properties": {
-          "algorithm": {
-            "type": "string"
-          },
-          "confidence": {
-            "format": "double",
-            "type": "number"
-          },
           "end": {
             "format": "double",
             "type": "number"
-          },
-          "provider": {
-            "type": "string"
-          },
-          "source": {
-            "type": "string"
           },
           "start": {
             "format": "double",
